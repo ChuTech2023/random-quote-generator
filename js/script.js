@@ -31,7 +31,8 @@ const quotes = [
   },
   {
     quote: 'I make clothes. Women make fashion.',
-    source: "Azzedine Alaïa"
+    source: "Azzedine Alaïa",
+    tags: ['Fashion', 'Couture']
   },
   {
     quote: 'We must never confuse elegance with snobbery.',
@@ -49,6 +50,17 @@ const getRandomQuote = () => {
   return quotes[randomNumber];
 }
 
+/* getRandomColor function to change page background color */
+
+const getRandomColor = () => {
+  // generating a random number and converting it to an integar, range of 255
+  const r = parseInt(Math.random() * 256);
+  const g = parseInt(Math.random() * 256);
+  const b = parseInt(Math.random() * 256);
+  //using three generated random numbers to create rgb color 
+  const rgbcolor = `rgb(${r}, ${g}, ${b})`;
+  return rgbcolor;
+}
 
 /***
  * `printQuote` function takes a random quote and generates html content from
@@ -66,9 +78,19 @@ const printQuote = () => {
   if (randomQuote.year) {
     htmlContent += `<span class="year"> ${randomQuote.year} </span>`;
   }
+  if (randomQuote.tags) {
+    htmlContent += `<span class="tags"> ${randomQuote.tags} </span>`;
+  }
   htmlContent += '</p>';
   document.getElementById('quote-box').innerHTML = htmlContent;
+  // Selects the body and what it contains and sets a random background color return by getRandomColor
+  document.querySelector('body').style.backgroundColor = getRandomColor();
 }
+
+// source: https://www.w3schools.com/js/js_timing.asp
+setInterval(function () {
+  printQuote()
+}, 10000)
 
 
 /***
