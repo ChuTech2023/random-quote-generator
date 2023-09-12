@@ -87,7 +87,7 @@ const printQuote = () => {
   document.querySelector('body').style.backgroundColor = getRandomColor();
 }
 
-// source: https://www.w3schools.com/js/js_timing.asp
+// source: https://www.w3schools.com/js/js_timing.asp, auto-refresh code to new one every 10 seconds
 setInterval(function () {
   printQuote()
 }, 10000)
